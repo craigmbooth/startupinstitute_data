@@ -1,10 +1,8 @@
-Applied Data Project
-====================
+# Applied Data Project
 
 We're going to use MapReduce to do PageRank on your Facebook followers
 
-Getting Your Facebook Information
----------------------------------
+## Getting Your Facebook Information
 
 We're going to use the tool [Netvizz](https://apps.facebook.com/netvizz/ "Netvizz"), which will allow you to export your friend list and the links between your friends as text files.
 
@@ -18,8 +16,7 @@ Select "Personal Network".  this will download you a list of all of your friends
 
 When you get a choice of files to download, choose the "gdf" file.  The "tab" file does not contain all of the information that we need.
 
-What do Netvizz files look like?
---------------------------------
+### What do Netvizz files look like?
 
 The ``gdf`` file contains two distinct CSV tables, concatenated together.
 
@@ -48,7 +45,35 @@ edgedef>node1 VARCHAR,node2 VARCHAR
 ...
 ```
 
-Preparing the Netvizz file for use
-----------------------------------
+### Preparing the Netvizz file for use
 
-In this repo 
+In this repo there is a source file, ``read_gdf.py`` that takes one of these gdf files and reformats it into some JSON
+
+```
+python read_gdf.py my_filename.gdf > my_filename.json
+```
+
+The output of this script is a JSON file, each of the top-level keys is the name of one of your friends and the associated values are the lists of friends you share with them:
+
+```
+{
+  "Andreas Pawlik": [
+    "Ben Oppenheimer",
+    "Malin Welander",
+    ...
+    ],
+  "Thomas Randall": [
+    "Phil Marsden",
+    "Richard Tymon",
+    "Nathan Butler",
+    ...
+  ],
+  ...
+}
+```
+
+This file is the input to the MapReduce script.
+
+## Analyzing The Links Between Your Friends
+
+xxxxxx
