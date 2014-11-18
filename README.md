@@ -6,20 +6,24 @@ We're going to use MapReduce to do PageRank on your Facebook followers
 Getting Your Facebook Information
 ---------------------------------
 
-We're going to use the tool Netvizz, which will allow you to export your friend list and the links between them as text files.
+We're going to use the tool [Netvizz](https://apps.facebook.com/netvizz/ "Netvizz"), which will allow you to export your friend list and the links between your friends as text files.
 
-First, go to the Netvizz app
+First, go to the Netvizz app, authorize it to access your data and get a screen like this:
 
+![Alt text](/images/netvizz1.png)
 
+Select "Personal Network".  this will download you a list of all of your friends along with a list of all the links between your friends.  After selecting "Personal Network" you get the option to download your friends Likes.  Feel free to do so, but it is not necessary for this project, so leave the box unchecked and hit "start"
 
-<write the walkthrough of netvizz here>
+![Alt text](/images/netvizz2.png)
 
-Download the gdf file.
+When you get a choice of files to download, choose the "gdf" file.  The "tab" file does not contain all of the information that we need.
 
 What do Netvizz files look like?
 --------------------------------
 
-The first lines contain the "nodes", or the points in the graph.  Each row is one of your friends:
+The ``gdf`` file contains two distinct CSV tables, concatenated together.
+
+The first table contains the "nodes", or the points in the graph.  Each row is one of your friends, and the first line starts with a header ``nodedef>``:
 
 ```
 nodedef>name VARCHAR,label VARCHAR,sex VARCHAR,locale VARCHAR,agerank INT
@@ -31,7 +35,7 @@ nodedef>name VARCHAR,label VARCHAR,sex VARCHAR,locale VARCHAR,agerank INT
 ...
 ```
 
-Then half way down the file, there is a line starting ``edgedef>`` and then the links between your friends
+The rows in this part of the file contain values separated by commas:  A unique ID for a person, their name, their sec, their language, and a ranking.  Following this table, there is a line starting ``edgedef>`` and the lines that follow that describe links between your friends
 
 ```
 edgedef>node1 VARCHAR,node2 VARCHAR
@@ -43,3 +47,8 @@ edgedef>node1 VARCHAR,node2 VARCHAR
 1109591,13301711
 ...
 ```
+
+Preparing the Netvizz file for use
+----------------------------------
+
+In this repo 
