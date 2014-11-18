@@ -80,4 +80,23 @@ This file is the input to the MapReduce script.
 
 ## 3. Analyzing The Links Between Your Friends
 
-xxxxxx
+### Installing the scripts
+
+``pip install -r requirements.txt``
+
+### Running the scripts
+
+Open up one terminal and run a server
+
+```
+python pagerank.py server --filename=<whatever_my_filename_is>
+```
+
+Then in another terminal, run a client
+
+```
+python pagerank.py client
+```
+
+The server will print XXXX something!
+###
