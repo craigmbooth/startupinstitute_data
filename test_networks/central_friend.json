@@ -1,0 +1,10 @@
+{
+    "Friend1": ["Friend2", "Friend3", "Friend4",
+                "Friend5", "Friend6", "Friend7"],
+    "Friend2": ["Friend1"],
+    "Friend3": ["Friend1"],
+    "Friend4": ["Friend1"],
+    "Friend5": ["Friend1"],
+    "Friend6": ["Friend1"],
+    "Friend7": ["Friend1"]
+}
