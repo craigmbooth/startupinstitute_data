@@ -49,7 +49,7 @@ edgedef>node1 VARCHAR,node2 VARCHAR
 ...
 ```
 
-## 2. Preparing the Netvizz file for use
+## 2. Preparing the gdf file for use
 
 In this repo there is a source file, ``read_gdf.py`` that takes one of these gdf files and reformats it into some JSON
 
@@ -85,6 +85,10 @@ This file is the input to the MapReduce script.
 ``pip install -r requirements.txt``
 
 ### Running the scripts
+
+For testing purposes, there are libraries that allow you to build out ``map`` and ``reduce`` functions on your own machine, and test them in parallel
+
+   * ``mincemeat.py``
 
 Open up one terminal and run a server
 
