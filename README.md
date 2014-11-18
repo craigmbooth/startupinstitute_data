@@ -1,10 +1,14 @@
 # Applied Data Project
 
-We're going to use MapReduce to do PageRank on your Facebook followers
+The code in this repo takes your Facebook network and uses the MapReduce framework to calculate the PageRank of your friends.  This code was written for a lesson on Big Data at the Startup Institute. The document is structured as follows:
 
-## Getting Your Facebook Information
+   1. Getting your Facebook friend network data
+   2. Parsing the raw information into a clean form
+   3. Using MapReduce to calculate the [PageRank](http://en.wikipedia.org/wiki/PageRank) of the friends in your network 
 
-We're going to use the tool [Netvizz](https://apps.facebook.com/netvizz/ "Netvizz"), which will allow you to export your friend list and the links between your friends as text files.
+## 1. Getting Your Facebook Information
+
+We're going to use the FB app [Netvizz](https://apps.facebook.com/netvizz/ "Netvizz"), which will allow you to export your friend list and the links between your friends as text files.
 
 First, go to the Netvizz app, authorize it to access your data and get a screen like this:
 
@@ -45,7 +49,7 @@ edgedef>node1 VARCHAR,node2 VARCHAR
 ...
 ```
 
-### Preparing the Netvizz file for use
+## 2. Preparing the Netvizz file for use
 
 In this repo there is a source file, ``read_gdf.py`` that takes one of these gdf files and reformats it into some JSON
 
@@ -74,6 +78,6 @@ The output of this script is a JSON file, each of the top-level keys is the name
 
 This file is the input to the MapReduce script.
 
-## Analyzing The Links Between Your Friends
+## 3. Analyzing The Links Between Your Friends
 
 xxxxxx
