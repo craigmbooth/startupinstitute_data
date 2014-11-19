@@ -82,15 +82,13 @@ This file is the input to the MapReduce script.
 
 ### Installing the scripts
 
-``pip install -r requirements.txt``
+No special installation is needed, as long as you have Python on your machine (you probably do), just clone this repo
 
 ### Running the scripts
 
-For testing purposes, there are libraries that allow you to build out ``map`` and ``reduce`` functions on your own machine, and test them in parallel
+For testing purposes, there are libraries that allow you to build out ``map`` and ``reduce`` functions on your own machine, and test them in parallel.  We will use ``mincemeat.py``.  To do the mapreduce, you need to run a server (which takes care of the things that MapReduce does, shuttling around data and doing the shuffle) and a client, which runs the map and reduce.
 
-   * ``mincemeat.py``
-
-Open up one terminal and run a server
+Open up one terminal, change into the directory where the code is installed and run a server:
 
 ```
 python pagerank.py server --filename=<whatever_my_filename_is>
@@ -102,5 +100,15 @@ Then in another terminal, run a client
 python pagerank.py client
 ```
 
-The server will print XXXX something!
-###
+The server will start printing out some diagnostic information:
+
+```
+Server completed run :  0 total PR :  155.1
+Server completed run :  1 total PR :  167.79
+Server completed run :  2 total PR :  179.211
+Server completed run :  3 total PR :  189.4899
+Server completed run :  4 total PR :  198.74091
+```
+
+The total PageRank will gradually trend towards the number of nodes in your network, when it is pretty much converged the results are accurate.  When the code is finished, it will print out the PageRanks of all of your friends.
+
