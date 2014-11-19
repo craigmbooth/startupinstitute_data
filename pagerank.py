@@ -9,14 +9,29 @@ NUMBER_ITERATIONS = 100
 def mapfn(k, v):
     """Map function for MapReduce.  See the slides for a description of
     what we're doing here"""
-    pass
+
+    n_out_links = len(v)
+    my_pr = k[1]
+    my_username = k[0]
+    for out_link in v:
+        yield (out_link, ("link",
+                          my_pr/float(n_out_links)))
+    yield (k[0], ("graph", v))
 
 
 def reducefn(k, vs):
     """Reduce function for MapReduce.  See the slides for a description of
     what we're doing here"""
-    pass
 
+    delta = 0.9
+    my_pr = 0
+    for v in vs:
+        if v[0] == "link":
+            my_pr += v[1] * delta
+        else:
+            graph = v[1]
+    my_pr += (1-delta)
+    return ((k, my_pr), graph)
 
 if __name__ == "__main__":
 
