@@ -1,0 +1,6 @@
+{
+    "Friend1": ["Friend2", "Friend3", "Friend4"],
+    "Friend2": ["Friend3"],
+    "Friend3": ["Friend1", "Friend2"],
+    "Friend4": ["Friend3"]
+}
